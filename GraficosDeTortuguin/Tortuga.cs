@@ -22,7 +22,7 @@ namespace GraficosDeTortuguin
             y = 0;
             llenarTablero();
             plumaArriba = true;
-            direccion = 0; //calando los cambios
+            direccion = 0; 
         }
 
         private void llenarTablero()
