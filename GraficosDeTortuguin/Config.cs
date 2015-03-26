@@ -9,6 +9,6 @@ namespace GraficosDeTortuguin
     public static class Config
     {
         public static byte numCuadros = 22;
-        public static byte tamanoCuadro = 40;
+        public static byte tamanoCuadro = 20;
     }
 }

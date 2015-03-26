@@ -11,7 +11,7 @@ namespace GraficosDeTortuguin
     class Tortuga
     {
         private byte[,] tablero;
-        private byte[,] tableroGrafico;
+        private Tile[,] tableroGrafico;
         private int x;
         private Image[] tortuImagenes = {GraficosDeTortuguin.Properties.Resources.tortuDer, 
                                             GraficosDeTortuguin.Properties.Resources.tortuAba,
@@ -25,8 +25,10 @@ namespace GraficosDeTortuguin
             _tabX = tabX;
             _tabY = tabY;
             tablero = new byte[20, 20];
+            tableroGrafico = new Tile[Config.numCuadros, Config.numCuadros];
             x = 0;
             y = 0;
+            llenarMatriz();
             llenarTablero();
             plumaArriba = true;
             direccion = 0;
@@ -86,10 +88,29 @@ namespace GraficosDeTortuguin
             plumaArriba = true;
         }
 
+        public void empezar()
+        {
+            if (!plumaArriba && tableroGrafico[x + 1, y + 1].Virgen)
+            {
+                tableroGrafico[x + 1, y + 1].Estado = 14 + direccion;
+                tableroGrafico[x + 1, y + 1].Virgen = false;
+            }
+        }
+
+        public void terminar()
+        {
+            if (!plumaArriba)
+            {
+                tableroGrafico[x + 1, y + 1].Estado = 18 + direccion;
+                tableroGrafico[x + 1, y + 1].Virgen = false;
+            }
+        }
+
         public void caminar()
         {
             if (direccion == 0)
             {
+                
                 if (x + 1 < 20)
                 {
                     x++;
@@ -124,6 +145,11 @@ namespace GraficosDeTortuguin
                         tablero[y, x] = 1;
                 }
             }
+            if (!plumaArriba)
+            {
+                tableroGrafico[x + 1, y + 1].Estado = 10 + direccion;
+                tableroGrafico[x + 1, y + 1].Virgen = false;
+            }
         }
 
         public void girarDerecha()
@@ -144,6 +170,18 @@ namespace GraficosDeTortuguin
 
         private void llenarMatriz()
         {
+            for (int i = 0; i < Config.numCuadros; i++)
+            {
+                for (int j = 0; j < Config.numCuadros; j++)
+                {
+                    tableroGrafico[i, j] = new Tile();
+                }
+            }
+            ponerEstado();
+        }
+
+        private void ponerEstado()
+        {
             /*
              * 1 2 3
              * 4 5 6
@@ -156,25 +194,25 @@ namespace GraficosDeTortuguin
                 for (int j = 0; j < Config.numCuadros; j++)
                 {
                     if (j == 0)
-                        tableroGrafico[i, j] = 4;
+                        tableroGrafico[i, j].Estado = 2;
 
                     else if (i == 0)
-                        tableroGrafico[i, j] = 2;
+                        tableroGrafico[i, j].Estado = 4;
 
                     else if (j == Config.numCuadros - 1)
-                        tableroGrafico[i, j] = 6;
+                        tableroGrafico[i, j].Estado = 8;
 
                     else if (i == Config.numCuadros - 1)
-                        tableroGrafico[i, j] = 8;
+                        tableroGrafico[i, j].Estado = 6;
                     else
-                        tableroGrafico[i, j] = 5;
+                        tableroGrafico[i, j].Estado = 5;
                 }
             }
 
-            tableroGrafico[0, 0] = 1;
-            tableroGrafico[0, Config.numCuadros - 1] = 3;
-            tableroGrafico[Config.numCuadros - 1, 0] = 7;
-            tableroGrafico[Config.numCuadros - 1, Config.numCuadros - 1] = 9;
+            tableroGrafico[0, 0].Estado = 1;
+            tableroGrafico[0, Config.numCuadros - 1].Estado = 7;
+            tableroGrafico[Config.numCuadros - 1, 0].Estado = 3;
+            tableroGrafico[Config.numCuadros - 1, Config.numCuadros - 1].Estado = 9;
         }
 
         public Panel[,] llenarTableroGrafico()
@@ -197,25 +235,38 @@ namespace GraficosDeTortuguin
                     paneles[i, j] = newPanel;
 
                     newPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                    int x = tableroGrafico[i, j].Estado;
 
-                    if (i == 0 && j == 0)
+                    if (x == 1)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsIA;
-                    else if (i == 0 && j == Config.numCuadros - 1)
+                    else if (x == 7)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsIAb;
-                    else if (i == Config.numCuadros - 1 && j == 0)
+                    else if (x == 3)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsDA;
-                    else if (i == Config.numCuadros - 1 && j == Config.numCuadros - 1)
+                    else if (x == 9)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsDAb;
-                    else if (i == 0)
+                    else if (x == 4)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorI;
-                    else if (i == Config.numCuadros - 1)
+                    else if (x == 6)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorD;
-                    else if (j == 0)
+                    else if (x == 2)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorArr;
-                    else if (j == Config.numCuadros - 1)
+                    else if (x == 8)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorAb;
-                    else
+                    else if (x == 5)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Cen;
+                    else if (x == 10 || x == 12) //direccion derecha
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Hor;
+                    else if (x == 11 || x == 13)
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Ver;
+                    else if (x == 14 || x==20) //18, 19, 20
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Derecha;
+                    else if (x == 15 || x==21)
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Abajo;
+                    else if (x == 16 || x== 18)
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Izquierda;
+                    else if(x==17 || x==19 )
+                        newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Arriba;
                 }
             }
             return paneles;

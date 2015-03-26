@@ -18,6 +18,7 @@ namespace GraficosDeTortuguin
         private Tortuga tortu;
         private bool tortugaCamina;
         private PictureBox tortuga;
+        private Panel[,] tablero;
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +27,8 @@ namespace GraficosDeTortuguin
             lblEstado.Text = tortu.ToString();
             tortuga = tortu.dibujarTortuga();
             Controls.Add(tortuga);
-            dibujarTablero(tortu.llenarTableroGrafico());
+            tablero = tortu.llenarTableroGrafico();
+            dibujarTablero(tablero);
         }
 
         private void cmdPlumaAbajo_Click(object sender, EventArgs e)
@@ -60,13 +62,29 @@ namespace GraficosDeTortuguin
             if (txtCaminar.Text.Length != 0)
             {
                 byte cuantos = Convert.ToByte(txtCaminar.Text);
-                for (int i = 0; i < cuantos; i++)
+                tortu.empezar();
+                actualizar(tortu.llenarTableroGrafico());
+                for (int i = 1; i <= cuantos; i++)
                 {
                     tortu.caminar();
+                    actualizar(tortu.llenarTableroGrafico());
                     lblEstado.Text = tortu.ToString();
                     tortuga.Location = tortu.dibujarTortuga().Location;
                     txtTablero.Text = tortu.imprimirTablero();
+                    
                     Thread.Sleep(500);
+                }
+                tortu.terminar();
+            }
+        }
+
+        private void actualizar(Panel[,] panel)
+        {
+            for (byte i = 0; i < Config.numCuadros; i++)
+            {
+                for (byte j = 0; j < Config.numCuadros; j++)
+                {
+                    tablero[i, j].BackgroundImage = panel[i, j].BackgroundImage;
                 }
             }
         }

@@ -63,6 +63,66 @@ namespace GraficosDeTortuguin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Abajo {
+            get {
+                object obj = ResourceManager.GetObject("Abajo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AbDe {
+            get {
+                object obj = ResourceManager.GetObject("AbDe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AbIz {
+            get {
+                object obj = ResourceManager.GetObject("AbIz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ArrDe {
+            get {
+                object obj = ResourceManager.GetObject("ArrDe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Arriba {
+            get {
+                object obj = ResourceManager.GetObject("Arriba", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ArrIz {
+            get {
+                object obj = ResourceManager.GetObject("ArrIz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BorAb {
             get {
                 object obj = ResourceManager.GetObject("BorAb", resourceCulture);
@@ -123,6 +183,16 @@ namespace GraficosDeTortuguin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Derecha {
+            get {
+                object obj = ResourceManager.GetObject("Derecha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EsDA {
             get {
                 object obj = ResourceManager.GetObject("EsDA", resourceCulture);
@@ -163,6 +233,26 @@ namespace GraficosDeTortuguin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hor {
+            get {
+                object obj = ResourceManager.GetObject("Hor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Izquierda {
+            get {
+                object obj = ResourceManager.GetObject("Izquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tortuAba {
             get {
                 object obj = ResourceManager.GetObject("tortuAba", resourceCulture);
@@ -196,6 +286,16 @@ namespace GraficosDeTortuguin.Properties {
         internal static System.Drawing.Bitmap tortuIzq {
             get {
                 object obj = ResourceManager.GetObject("tortuIzq", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ver {
+            get {
+                object obj = ResourceManager.GetObject("Ver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
