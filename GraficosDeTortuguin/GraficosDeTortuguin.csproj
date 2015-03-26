@@ -105,6 +105,27 @@
   <ItemGroup>
     <None Include="Resources\BorAb.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2015-03-25 23.07.57.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\capture__r1068469131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tortu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tortuAba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tortuArr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tortuDer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tortuIzq.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

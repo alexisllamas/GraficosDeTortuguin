@@ -8,22 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 
 namespace GraficosDeTortuguin
 {
     public partial class Form1 : Form
     {
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
         private Tortuga tortu;
-        private Tablero table;
+        private bool tortugaCamina;
+        private PictureBox tortuga;
         public Form1()
         {
             InitializeComponent();
-            tortu = new Tortuga();
-            table = new Tablero(150, 20);
+            tortu = new Tortuga(250, 70);
+            tortugaCamina = true;
             lblEstado.Text = tortu.ToString();
-            dibujarTablero(table.llenarTablero());
+            tortuga = tortu.dibujarTortuga();
+            Controls.Add(tortuga);
+            dibujarTablero(tortu.llenarTableroGrafico());
         }
 
         private void cmdPlumaAbajo_Click(object sender, EventArgs e)
@@ -42,19 +45,30 @@ namespace GraficosDeTortuguin
         {
             tortu.girarDerecha();
             lblEstado.Text = tortu.ToString();
+            tortuga.BackgroundImage = tortu.dibujarTortuga().BackgroundImage;
         }
 
         private void cmdGirarIzquierda_Click(object sender, EventArgs e)
         {
             tortu.girarIzquierda();
             lblEstado.Text = tortu.ToString();
+            tortuga.BackgroundImage = tortu.dibujarTortuga().BackgroundImage;
         }
 
         private void cmdCaminar_Click(object sender, EventArgs e)
         {
-            byte cuantos = Convert.ToByte(txtCaminar.Text);
-            tortu.caminar(cuantos);
-            lblEstado.Text = tortu.ToString();
+            if (txtCaminar.Text.Length != 0)
+            {
+                byte cuantos = Convert.ToByte(txtCaminar.Text);
+                for (int i = 0; i < cuantos; i++)
+                {
+                    tortu.caminar();
+                    lblEstado.Text = tortu.ToString();
+                    tortuga.Location = tortu.dibujarTortuga().Location;
+                    txtTablero.Text = tortu.imprimirTablero();
+                    Thread.Sleep(500);
+                }
+            }
         }
 
         private void cmdMostrar_Click(object sender, EventArgs e)
@@ -76,13 +90,17 @@ namespace GraficosDeTortuguin
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Up))
-                tortu.caminar(1);
+                tortu.caminar();
             else if (e.KeyChar == Convert.ToChar(Keys.Left))
                 tortu.girarIzquierda();
             else if (e.KeyChar == Convert.ToChar(Keys.Right))
                 tortu.girarDerecha();
 
             lblEstado.Text = tortu.ToString();
+        }
+
+        private void Run()
+        {
         }
     }
 }

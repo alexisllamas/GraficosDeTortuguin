@@ -13,17 +13,17 @@ namespace GraficosDeTortuguin
         private byte[,] matriz;
         private int _x;
         private int _y;
-        private int torX;
-        private int torY;
-        
+        private Image[] tortuImagenes = {GraficosDeTortuguin.Properties.Resources.tortuDer, 
+                                            GraficosDeTortuguin.Properties.Resources.tortuAba,
+                                            GraficosDeTortuguin.Properties.Resources.tortuIzq,
+                                            GraficosDeTortuguin.Properties.Resources.tortuArr};
+
         public Tablero(int x, int y)
         {
             matriz = new byte[Config.numCuadros, Config.numCuadros];
             llenarMatriz();
             _x = x;
             _y = y;
-            torX = x + Config.tamanoCuadro;
-            torY = y + Config.tamanoCuadro;
         }
 
         private void llenarMatriz()
@@ -45,10 +45,10 @@ namespace GraficosDeTortuguin
                     else if (i == 0)
                         matriz[i, j] = 2;
 
-                    else if (j == Config.numCuadros-1)
+                    else if (j == Config.numCuadros - 1)
                         matriz[i, j] = 6;
 
-                    else if (i == Config.numCuadros-1)
+                    else if (i == Config.numCuadros - 1)
                         matriz[i, j] = 8;
                     else
                         matriz[i, j] = 5;
@@ -56,9 +56,9 @@ namespace GraficosDeTortuguin
             }
 
             matriz[0, 0] = 1;
-            matriz[0, Config.numCuadros-1] = 3;
-            matriz[Config.numCuadros-1, 0] = 7;
-            matriz[Config.numCuadros-1, Config.numCuadros-1] = 9;
+            matriz[0, Config.numCuadros - 1] = 3;
+            matriz[Config.numCuadros - 1, 0] = 7;
+            matriz[Config.numCuadros - 1, Config.numCuadros - 1] = 9;
         }
 
         public Panel[,] llenarTablero()
@@ -76,7 +76,7 @@ namespace GraficosDeTortuguin
                 {
                     Panel newPanel = new Panel();
                     newPanel.Size = new Size(Config.tamanoCuadro, Config.tamanoCuadro);
-                    newPanel.Location = new Point(Config.tamanoCuadro * i + _x, Config.tamanoCuadro * j + _y);
+                    newPanel.Location = new Point((Config.tamanoCuadro + 1) * i + _x, (Config.tamanoCuadro + 1) * j + _y);
 
                     paneles[i, j] = newPanel;
 
@@ -84,25 +84,42 @@ namespace GraficosDeTortuguin
 
                     if (i == 0 && j == 0)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsIA;
-                    else if (i == 0 && j == Config.numCuadros-1)
+                    else if (i == 0 && j == Config.numCuadros - 1)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsIAb;
-                    else if (i == Config.numCuadros-1 && j == 0)
+                    else if (i == Config.numCuadros - 1 && j == 0)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsDA;
-                    else if (i == Config.numCuadros-1 && j == Config.numCuadros-1)
+                    else if (i == Config.numCuadros - 1 && j == Config.numCuadros - 1)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.EsDAb;
                     else if (i == 0)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorI;
-                    else if (i == Config.numCuadros-1)
+                    else if (i == Config.numCuadros - 1)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorD;
                     else if (j == 0)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorArr;
-                    else if(j==Config.numCuadros-1)
+                    else if (j == Config.numCuadros - 1)
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.BorAb;
                     else
                         newPanel.BackgroundImage = GraficosDeTortuguin.Properties.Resources.Cen;
                 }
             }
             return paneles;
+        }
+
+        public PictureBox dibujarTortuga(int x, int y, byte pos)
+        {
+            x *= Config.tamanoCuadro + 1;
+            y *= Config.tamanoCuadro + 1;
+            x += _x + Config.tamanoCuadro + Config.tamanoCuadro / 4;
+            y += _y + Config.tamanoCuadro + Config.tamanoCuadro / 4;
+
+            PictureBox tortuguin = new PictureBox();
+
+            tortuguin.Location = new Point(x, y);
+            tortuguin.Size = new Size(Config.tamanoCuadro / 2, Config.tamanoCuadro / 2);
+            tortuguin.BackgroundImage = tortuImagenes[pos];
+            tortuguin.BackgroundImageLayout = ImageLayout.Stretch;
+
+            return tortuguin;
         }
     }
 }
