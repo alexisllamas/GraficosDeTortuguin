@@ -61,11 +61,92 @@ namespace GraficosDeTortuguin.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a kljklj.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static string ppppp {
+        internal static System.Drawing.Bitmap BorAb {
             get {
-                return ResourceManager.GetString("ppppp", resourceCulture);
+                object obj = ResourceManager.GetObject("BorAb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BorArr {
+            get {
+                object obj = ResourceManager.GetObject("BorArr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BorD {
+            get {
+                object obj = ResourceManager.GetObject("BorD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BorI {
+            get {
+                object obj = ResourceManager.GetObject("BorI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cen {
+            get {
+                object obj = ResourceManager.GetObject("Cen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EsDA {
+            get {
+                object obj = ResourceManager.GetObject("EsDA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EsDAb {
+            get {
+                object obj = ResourceManager.GetObject("EsDAb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EsIA {
+            get {
+                object obj = ResourceManager.GetObject("EsIA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EsIAb {
+            get {
+                object obj = ResourceManager.GetObject("EsIAb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

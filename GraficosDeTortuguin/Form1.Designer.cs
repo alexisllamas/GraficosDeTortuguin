@@ -45,9 +45,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 443);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 468);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(629, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(791, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -125,7 +125,7 @@
             // 
             // txtTablero
             // 
-            this.txtTablero.Location = new System.Drawing.Point(585, 50);
+            this.txtTablero.Location = new System.Drawing.Point(640, 49);
             this.txtTablero.Multiline = true;
             this.txtTablero.Name = "txtTablero";
             this.txtTablero.Size = new System.Drawing.Size(186, 268);
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 465);
+            this.ClientSize = new System.Drawing.Size(791, 490);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.cmdMostrar);
             this.Controls.Add(this.txtCaminar);
@@ -147,6 +147,7 @@
             this.Controls.Add(this.cmdPlumaAbajo);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -7,19 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
 
 namespace GraficosDeTortuguin
 {
     public partial class Form1 : Form
     {
-
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
         private Tortuga tortu;
+        private Tablero table;
         public Form1()
         {
             InitializeComponent();
             tortu = new Tortuga();
+            table = new Tablero(150, 20);
             lblEstado.Text = tortu.ToString();
-            dibujarTablero();
+            dibujarTablero(table.llenarTablero());
         }
 
         private void cmdPlumaAbajo_Click(object sender, EventArgs e)
@@ -58,30 +62,27 @@ namespace GraficosDeTortuguin
             txtTablero.Text = tortu.imprimirTablero();
         }
 
-        private void dibujarTablero()
+        private void dibujarTablero(Panel[,] paneles)
         {
-            int tamanoCuadro = 20;
-            int numCuadros = 20;
-            var clr1 = Color.DarkGray;
-            var clr2 = Color.White;
-
-            for (byte i = 0; i < numCuadros; i++)
+            for (byte i = 0; i < Config.numCuadros; i++)
             {
-                for (byte j = 0; j < numCuadros; j++)
+                for (byte j = 0; j < Config.numCuadros; j++)
                 {
-                    // create new Panel control which will be one 
-                    // chess board tile
-                    Panel newPanel = new Panel();
-                    newPanel.Size = new Size(tamanoCuadro, tamanoCuadro);
-                    newPanel.Location = new Point((tamanoCuadro + 1) * i  + 150, (tamanoCuadro + 1) * j  + 20);
-
-                    // add to Form's Controls so that they show up
-                    Controls.Add(newPanel);
-
-                    // color the backgrounds
-                    newPanel.BackColor = Color.DarkGoldenrod;
+                    Controls.Add(paneles[i, j]);
                 }
             }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Up))
+                tortu.caminar(1);
+            else if (e.KeyChar == Convert.ToChar(Keys.Left))
+                tortu.girarIzquierda();
+            else if (e.KeyChar == Convert.ToChar(Keys.Right))
+                tortu.girarDerecha();
+
+            lblEstado.Text = tortu.ToString();
         }
     }
 }
