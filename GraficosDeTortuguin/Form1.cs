@@ -72,7 +72,7 @@ namespace GraficosDeTortuguin
                     tortuga.Location = tortu.dibujarTortuga().Location;
                     txtTablero.Text = tortu.imprimirTablero();
                     
-                    Thread.Sleep(500);
+                    Thread.Sleep(250);
                 }
                 tortu.terminar();
             }
