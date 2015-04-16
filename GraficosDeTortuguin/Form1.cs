@@ -18,30 +18,35 @@ namespace GraficosDeTortuguin
             InitializeComponent();
             tortu = new Tortuga();
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdPlumaAbajo_Click(object sender, EventArgs e)
         {
             tortu.plumaAbajo();
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdPlumaArriba_Click(object sender, EventArgs e)
         {
             tortu.plumaArribaa();
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdGirarDerecha_Click(object sender, EventArgs e)
         {
             tortu.girarDerecha();
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdGirarIzquierda_Click(object sender, EventArgs e)
         {
             tortu.girarIzquierda();
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdCaminar_Click(object sender, EventArgs e)
@@ -49,6 +54,7 @@ namespace GraficosDeTortuguin
             byte cuantos = Convert.ToByte(txtCaminar.Text);
             tortu.caminar(cuantos);
             lblEstado.Text = tortu.ToString();
+            txtTablero.Text = tortu.imprimirTablero();
         }
 
         private void cmdMostrar_Click(object sender, EventArgs e)
