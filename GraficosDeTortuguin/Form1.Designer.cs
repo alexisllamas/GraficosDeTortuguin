@@ -33,11 +33,11 @@
             this.cmdMostrar = new System.Windows.Forms.Button();
             this.txtCaminar = new System.Windows.Forms.TextBox();
             this.cmdCaminar = new System.Windows.Forms.Button();
-            this.txtTablero = new System.Windows.Forms.TextBox();
             this.cmdGirarIzquierda = new System.Windows.Forms.Button();
             this.cmdGirarDerecha = new System.Windows.Forms.Button();
             this.cmdPlumaArriba = new System.Windows.Forms.Button();
             this.cmdPlumaAbajo = new System.Windows.Forms.Button();
+            this.txtTablero = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +45,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 415);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 557);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(623, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(791, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -82,14 +82,6 @@
             this.cmdCaminar.Text = "Caminar";
             this.cmdCaminar.UseVisualStyleBackColor = true;
             this.cmdCaminar.Click += new System.EventHandler(this.cmdCaminar_Click);
-            // 
-            // txtTablero
-            // 
-            this.txtTablero.Location = new System.Drawing.Point(183, 13);
-            this.txtTablero.Multiline = true;
-            this.txtTablero.Name = "txtTablero";
-            this.txtTablero.Size = new System.Drawing.Size(186, 268);
-            this.txtTablero.TabIndex = 13;
             // 
             // cmdGirarIzquierda
             // 
@@ -131,11 +123,19 @@
             this.cmdPlumaAbajo.UseVisualStyleBackColor = true;
             this.cmdPlumaAbajo.Click += new System.EventHandler(this.cmdPlumaAbajo_Click);
             // 
+            // txtTablero
+            // 
+            this.txtTablero.Location = new System.Drawing.Point(12, 287);
+            this.txtTablero.Multiline = true;
+            this.txtTablero.Name = "txtTablero";
+            this.txtTablero.Size = new System.Drawing.Size(186, 268);
+            this.txtTablero.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 437);
+            this.ClientSize = new System.Drawing.Size(791, 579);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.cmdMostrar);
             this.Controls.Add(this.txtCaminar);
@@ -145,8 +145,10 @@
             this.Controls.Add(this.cmdGirarDerecha);
             this.Controls.Add(this.cmdPlumaArriba);
             this.Controls.Add(this.cmdPlumaAbajo);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -161,11 +163,11 @@
         private System.Windows.Forms.Button cmdMostrar;
         private System.Windows.Forms.TextBox txtCaminar;
         private System.Windows.Forms.Button cmdCaminar;
-        private System.Windows.Forms.TextBox txtTablero;
         private System.Windows.Forms.Button cmdGirarIzquierda;
         private System.Windows.Forms.Button cmdGirarDerecha;
         private System.Windows.Forms.Button cmdPlumaArriba;
         private System.Windows.Forms.Button cmdPlumaAbajo;
+        private System.Windows.Forms.TextBox txtTablero;
     }
 }
 
